@@ -2,6 +2,14 @@
 <head></head>
 <body>
 <h3>Simple HTML</h3>
+
+<script>
+console.log("...about to load t5.js")
+fetch("t5.js")
+  .then(rsp => rsp.json())
+  .then(data => console.log(data))
+</script>
+
 <p/>
 First line. <br/>
 <hr width="60%"/>
