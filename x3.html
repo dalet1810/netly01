@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<style>
+table, th, td {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h3>Simple HTML</h3>
+<script>
+console.log("...about to load t5.js")
+fetch("t5.js")
+  .then(rsp => rsp.json())
+  .then(data => console.log(data))
+</script>
+<p>
+First line. <br/>
+<hr width="60%"/>
+Second line. <br/>
+<p>
+<script>
+fetch("t5.js").then(rsp => rsp.json())
+  .then(x => $.each(x, x => console.log("x=", x)))
+  .then(data => $(document).ready( function(){
+    console.log("ready."); 
+    console.log("length: " + data["rsp"].length); 
+    let en = data["rsp"].length
+    console.log("item:"+data["rsp"][0]["Model"]+" *en=" + en); 
+    for(i=0; i<en; i++) {
+      console.log("line " + i + ":" + data["rsp"][i]["Model"]);
+      $("#itm2").append("<tr><td>" + 
+        data["rsp"][i]["Make"] +
+        "<td>" + data["rsp"][i]["Model"] + "</td>" +
+        "<td>" + data["rsp"][i]["Price"] + "</td>" +
+       "</td></tr>")
+    }
+    $("#exthree").append("++what++" + data["rsp"][0]["Make"] )
+
+  }))
+
+</script>
+<div id="exthree">..x3 
+<table>
+<thead>
+<tr><th>Make</th><th>Model</th><th>Price</th></tr>
+</thead>
+<tbody id="itm2">
+<tr>
+<td>Subaru</td><td>B3</td><td>500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
