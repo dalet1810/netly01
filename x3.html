@@ -39,7 +39,13 @@ fetch("t5.js").then(rsp => rsp.json())
        "</td></tr>")
     }
     $("#exthree").append("++what++" + data["rsp"][0]["Make"] )
-
+/*
+    $("#itm2").append("<tr><td>" + 
+       data["rsp"][0]["Make"] +
+       "<td>" + data["rsp"][0]["Model"] + "</td>" +
+       "<td>" + data["rsp"][0]["Price"] + "</td>" +
+       "</td></tr>")
+"*/
   }))
 
 </script>
